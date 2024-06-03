@@ -23,9 +23,9 @@ const Image: React.FC<ImageProps> = ({ src, alt, className }) => (
 );
 
 const Nav: React.FC<NavProps> = ({ items }) => (
-  <nav className="flex gap-5 my-auto text-lg font-bold text-amber-600 max-md:flex-wrap">
+  <nav className="flex gap-5 my-auto text-xl font-bold text-amber-600 max-md:flex-wrap">
     {items.map((item) => (
-      <div className="grow" tabIndex={0}>
+      <div className="grow " tabIndex={0}>
         {item}
       </div>
     ))}
@@ -48,10 +48,10 @@ const FormField: React.FC<FormFieldProps> = ({ label, id, type }) => (
 
 const MemberForm: React.FC<MemberFormProps> = () => (
   <form className="flex flex-col grow max-md:mt-10 max-md:max-w-full">
-    <h2 className="self-start ml-16 text-3xl font-bold text-amber-600 max-md:ml-2.5">
+    <h2 className="self-start ml-20 px-1 text-3xl font-bold text-amber-600 max-md:ml-2.5">
       Register as a member
     </h2>
-    <div className="px-7 py-10 mt-2 bg-amber-600 rounded-xl max-md:px-5 max-md:max-w-full">
+    <div className="px-7 py-10 ml-20 mt-2 bg-amber-600 rounded-xl max-md:px-5 max-md:max-w-full">
       <div className="flex gap-5 max-md:flex-col max-md:gap-0">
         <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
           <FormField label="First Name" id="firstName" type="text" />
@@ -90,7 +90,7 @@ const MyComponent = () => {
       <header className="flex flex-col items-center pr-9 pl-3.5 w-full max-md:pr-5 max-md:max-w-full">
         <div className="flex gap-5 justify-between self-stretch w-full max-md:flex-wrap max-md:max-w-full">
           <div className="flex gap-4">
-            <div className="flex gap-0.5">
+            <a href="../page" className="flex gap-0.5">
               <Image
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/f79a7274472c24b2f9c293ea73cfd3b844d5e04f5ab7a14add1a6cc162eb00fe?apiKey=5225f171b9d24c36ba6d7c8220e73d94&"
                 alt="Logo Part 1"
@@ -101,8 +101,8 @@ const MyComponent = () => {
                 alt="Logo Part 2"
                 className="shrink-0 w-6 aspect-[0.75] fill-amber-600"
               />
-            </div>
-            <h1 className="flex-auto my-auto text-lg font-bold text-amber-500">
+            </a>
+            <h1 className="flex-auto my-auto text-2xl font-bold text-amber-600">
               OutThere Social Club
             </h1>
           </div>

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from 'next/link';
 
 type HeaderComponentProps = {
   logoSrc: string;
@@ -7,7 +8,7 @@ type HeaderComponentProps = {
 
 const HeaderComponent: React.FC<HeaderComponentProps> = ({ logoSrc, navItems }) => {
   return (
-    <header className="flex overflow-hidden relative flex-col items-start pt-3.5 pr-9 pb-20 pl-3.5 w-full text-lg font-bold text-white" style={{ minHeight: '1000px' }}>
+    <header className="flex overflow-hidden relative flex-col items-start pt-3.5 pr-9 pb-20 pl-3.5 w-full text-xl font-bold text-white" style={{ minHeight: '1000px' }}>
       <img 
         loading="lazy" 
         src={logoSrc} 
@@ -16,12 +17,14 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ logoSrc, navItems }) 
       />
       <div className="flex relative gap-5 justify-between self-stretch w-full max-md:flex-wrap max-md:max-w-full">
         <div className="flex gap-4">
-          <img 
-            loading="lazy" 
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/910c3cd67c242c0d15838d90ed248af281a63a0717f943a14470f8537a8ce421?apiKey=5225f171b9d24c36ba6d7c8220e73d94&" 
-            alt="Logo" 
-            className="shrink-0 aspect-[1.59] w-[51px] text-xl" 
-          />
+        <Link href="../page">
+            <img 
+              loading="lazy" 
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/910c3cd67c242c0d15838d90ed248af281a63a0717f943a14470f8537a8ce421?apiKey=5225f171b9d24c36ba6d7c8220e73d94&" 
+              alt="Logo" 
+              className="shrink-0 aspect-[1.59] w-[51px] text-xl cursor-pointer"
+            />
+        </Link>
           <div className="flex-auto my-auto text-2xl">OutThere Social Club</div>
         </div>
         <nav className="flex gap-5 my-auto max-md:flex-wrap text-xl">
@@ -83,9 +86,11 @@ const App: React.FC = () => {
           <div className="flex grow gap-5 mt-11 font-bold max-md:flex-wrap max-md:mt-10">
             <div className="shrink-0 self-end mt-80 h-28 bg-amber-600 border-2 border-amber-600 border-solid max-md:mt-10" />
             <div className="flex-col grow px-5 pb-px basis-0 w-full">
-              <div className="flex justify-center items-center px-10 pt-28 pb-28 text-5xl text-white bg-amber-600 rounded-2xl max-md:px-5 max-md:max-w-full max-md:text-4xl">
+            <div className="flex justify-center items-center px-10 pt-28 pb-28 text-5xl text-white bg-amber-600 rounded-2xl max-md:px-5 max-md:max-w-full max-md:text-4xl">
+              <Link href="/registrationM">
                 Register Today
-              </div>
+              </Link>
+            </div>
               <div className="mt-20 mb-0 text-4xl text-amber-600 max-md:mt-10 max-md:max-w-full">
                 Connecting businesses with the people who want to be a part of them
               </div>
