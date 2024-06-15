@@ -1,10 +1,8 @@
-// pages/api/addRow.js
-
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const { firstName, lastName, email, phone, dob, address } = req.body;
+    const { firstName, lastName, email, phone, dob, address, activity } = req.body;
 
     const auth = new google.auth.JWT(
       process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
@@ -16,20 +14,34 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth });
 
     const spreadsheetId = process.env.SPREADSHEET_ID;
-    const range = 'Web Form Members!A:G'; // Ensure this range matches your sheet's name and columns
-
-    const values = [
-      [firstName, lastName, email, phone, dob, address],
-    ];
-
-    const resource = {
-      values,
-    };
+    const sheetName = 'Web Form Members';
 
     try {
+      // Get all existing rows to determine the next record ID
+      const getRows = await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range: `${sheetName}!A:A`,
+      });
+
+      const rows = getRows.data.values;
+
+      let nextRecordId = 1; // Default to 1 if no rows exist
+      if (rows && rows.length > 1) { // Account for the header row
+        const recordIds = rows.slice(1).map(row => parseInt(row[0], 10)); // Skip header
+        nextRecordId = Math.max(...recordIds) + 1;
+      }
+
+      const values = [
+        [nextRecordId, firstName, lastName, email, address, phone, activity],
+      ];
+
+      const resource = {
+        values,
+      };
+
       const result = await sheets.spreadsheets.values.append({
         spreadsheetId,
-        range,
+        range: `${sheetName}!A:F`,
         valueInputOption: 'RAW',
         resource,
       });

@@ -41,8 +41,8 @@ const Nav: React.FC<NavProps> = ({ items }) => (
 );
 
 const FormField: React.FC<FormFieldProps> = ({ label, id, type, onChange, value }) => (
-  <div className="flex flex-col grow text-2xl text-bold bg-amber-600 max-md:mt-10">
-    <label className="text-white" htmlFor={id}>
+  <div className="flex flex-col grow text-2xl font-bold bg-amber-600 max-md:mt-10">
+    <label className="text-white font-bold text-2xl" htmlFor={id}>
       {label}
     </label>
     <input
@@ -56,6 +56,7 @@ const FormField: React.FC<FormFieldProps> = ({ label, id, type, onChange, value 
   </div>
 );
 
+
 const MemberForm: React.FC<MemberFormProps> = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -63,13 +64,15 @@ const MemberForm: React.FC<MemberFormProps> = () => {
     email: '',
     phone: '',
     dob: '',
-    address: ''
+    address: '',
+    activity: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target as HTMLInputElement | HTMLTextAreaElement;
     setFormData({ ...formData, [id]: value });
   };
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -83,7 +86,7 @@ const MemberForm: React.FC<MemberFormProps> = () => {
       });
       if (response.ok) {
         alert('Registration successful');
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', dob: '', address: '' });
+        setFormData({ firstName: '', lastName: '', email: '', phone: '', dob: '', address: '', activity: ''});
       } else {
         alert('Error registering');
       }
@@ -98,7 +101,7 @@ const MemberForm: React.FC<MemberFormProps> = () => {
       <h2 className="self-start ml-20 px-1 text-3xl font-bold text-amber-600 max-md:ml-2.5">
         Register as a member
       </h2>
-      <div className="px-7 py-10 ml-20 mt-2 bg-amber-600 rounded-xl max-md:px-5 max-md:max-w-full">
+      <div className="px-7 py-10 ml-20 mt-2 bg-amber-600 h-[1000px] rounded-xl max-md:px-5 max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
           <div className="flex flex-col w-6/12 max-md:ml-0 max-md:w-full">
             <FormField label="First Name" id="firstName" type="text" onChange={handleChange} value={formData.firstName} />
@@ -106,9 +109,6 @@ const MemberForm: React.FC<MemberFormProps> = () => {
             <FormField label="Phone Number" id="phone" type="tel" onChange={handleChange} value={formData.phone} />
             <FormField label="Date of Birth" id="dob" type="date" onChange={handleChange} value={formData.dob} />
             <FormField label="Address" id="address" type="text" onChange={handleChange} value={formData.address} />
-            <p className="mt-10 text-base">
-              By pressing submit you agree to our privacy policy
-            </p>
           </div>
           <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
             <FormField label="Last Name" id="lastName" type="text" onChange={handleChange} value={formData.lastName} />
@@ -117,14 +117,26 @@ const MemberForm: React.FC<MemberFormProps> = () => {
               alt=""
               className="self-start mt-8 w-full aspect-[0.76]"
             />
-            <button
+          </div>
+        </div>
+        <div className="flex flex-col grow text-2xl mt-5 text-bold bg-amber-600 max-md:mt-10">
+          <label className="text-white font-bold text-2xl" htmlFor="activity">
+            What activities are you interested in?
+          </label>
+          <textarea
+            id="activity"
+            value={formData.activity}
+            onChange={handleChange}
+            className="mt-5 rounded-xl bg-stone-50 h-[100px] pl-3"
+            aria-label="Activity"
+          />
+        <button 
               type="submit"
-              className="justify-center items-center text-2xl px-16 py-4 mt-7 text-amber-600 whitespace-nowrap rounded-xl bg-stone-50 max-md:px-5"
+              className="justify-center items-center font-bold text-2xl px-16 py-4 mt-7 text-amber-600 whitespace-nowrap rounded-xl bg-stone-50 max-md:px-5"
             >
               Submit
             </button>
-          </div>
-        </div>
+      </div>
       </div>
     </form>
   );
@@ -159,7 +171,7 @@ const MyComponent = () => {
       </header>
       <main className="mt-12 w-full max-w-[1627px] max-md:mt-10 max-md:max-w-full">
         <section className="flex gap-5 max-md:flex-col max-md:gap-0">
-          <div className="flex flex-col w-[59%] max-md:ml-0 max-md:w-full">
+          <div className="flex flex-col w-[59%] h-[1200px] max-md:ml-0 max-md:w-full">
             <MemberForm />
           </div>
           <aside className="flex flex-col mt-20 ml-5 w-[41%] max-md:ml-0 max-md:w-full">
@@ -174,7 +186,7 @@ const MyComponent = () => {
           </aside>
         </section>
       </main>
-      
+
     </div>
   );
 };
