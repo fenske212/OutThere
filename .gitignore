@@ -41,5 +41,3 @@ config/service-account.json
 >>>>>>> 6954ffb517d45877a30efd10ac597e08a51274b6
 .next/
 node_modules/
-.next/
-node_modules/
