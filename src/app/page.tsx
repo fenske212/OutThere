@@ -72,7 +72,7 @@ const App: React.FC = () => { // this is the main component, where all the attri
     <div className="flex flex-col bg-white">
       <HeaderComponent logoSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/77846dc17fda938c4c6666cbdcc5d87528363a184cdbb7670fa6959f3b71ee23?apiKey=5225f171b9d24c36ba6d7c8220e73d94&" navItems={navItems} />
       <main className="self-center mt-6 w-full max-md:max-w-full">
-        <div className="flex gap-5 max-md:flex-col max-md:gap-0"> 
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0 h-[100vh]"> 
         <section className="flex flex-col w-[95%] h-[100%] max-w-[1400px] "> 
           <div className="flex grow gap-5 mt-11 font-bold max-md:flex-wrap max-md:mt-10">
             <div className="flex-col grow px-5 pb-px basis-0 w-full">

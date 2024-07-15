@@ -830,6 +830,9 @@ video {
   .h-\[100px\] {
   height: 100px;
 }
+  .h-\[100vh\] {
+  height: 100vh;
+}
   .h-\[1200px\] {
   height: 1200px;
 }

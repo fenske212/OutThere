@@ -190,6 +190,10 @@ const MyComponent = () => {
           </aside>
         </section>
       </main>
+      <footer className="flex justify-between gap-5 items-end px-5 pt-20 pb-5 mt-48 w-full text-2xl font-bold text-white bg-amber-600 max-md:flex-wrap max-md:px-5 max-md:mt-10 max-md:max-w-full">
+        <div className="flex-auto mt-20 max-md:mt-10 max-md:max-w-full">2024 OutThere Social Club, All rights reserved</div>
+        <div className="flex-auto pr-px pl-48 mt-20 ml-96 max-md:mt-10">Privacy / Contact</div>
+    </footer>
     </main>
     </div>
   );
